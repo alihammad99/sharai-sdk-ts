@@ -1,6 +1,6 @@
 import axios from "axios";
 import { clientGetProductsByCategory } from "../get-by-category";
-import { validateUrl } from "@/validate-url";
+import { validateUrl } from "../../utils/validate-url";
 import { clientGetManyProducts } from "../post-many";
 
 type Props = {

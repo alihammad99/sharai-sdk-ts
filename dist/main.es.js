@@ -1,25 +1,24 @@
-import { validateUrl as s } from "@/validate-url";
-import a from "axios";
-const R = async (t) => {
+import s from "axios";
+const l = () => {
+}, R = async (t) => {
   const r = process.env.SHARAI_SERVER_URL;
-  s();
   try {
-    await a.delete(`${r}/api/product/delete-one?id=${t}`);
+    await s.delete(`${r}/api/product/delete-one?id=${t}`);
   } catch (e) {
     console.error(e);
   }
 }, d = async (t, r, e = !0, o = !1) => {
-  const l = `${process.env.SHARAI_SERVER_URL}/api/product/get-by-category?id=${t}&active=${e}&similar=${o}`;
+  const i = `${process.env.SHARAI_SERVER_URL}/api/product/get-by-category?id=${t}&active=${e}&similar=${o}`;
   try {
-    const n = await a.get(l), { data: i } = await n.data;
-    return { data: i };
-  } catch (n) {
-    console.error(n);
+    const c = await s.get(i), { data: n } = await c.data;
+    return { data: n };
+  } catch (c) {
+    console.error(c);
   }
 }, y = async (t, r = !0) => {
   const e = process.env.SHARAI_SERVER_URL;
   try {
-    const o = await a.post(
+    const o = await s.post(
       `${e}/api/product/post-many?active=${r}`,
       { products: [...t] },
       {
@@ -27,28 +26,26 @@ const R = async (t) => {
           "Content-Type": "application/json"
         }
       }
-    ), { result: c } = o.data;
-    return c;
+    ), { result: a } = o.data;
+    return a;
   } catch (o) {
     console.error("There was a problem posting the data:", o);
   }
 }, E = (t) => {
-  const { id: r, category: e, products: o, active: c } = t;
-  return r ? p(t) : o && (o == null ? void 0 : o.length) > 0 ? y(o, c) : e ? d(e) : p(t);
+  const { id: r, category: e, products: o, active: a } = t;
+  return r ? p(t) : o && (o == null ? void 0 : o.length) > 0 ? y(o, a) : e ? d(e) : p(t);
 }, p = async (t) => {
-  s();
-  const r = process.env.SHARAI_SERVER_URL, { sort: e, page: o, limit: c, active: l } = t, n = e ? `${r}/api/product/get-all?sort=${e}&page=${o}&limit=${c}&active=${l}` : `${r}/api/product/get-all?page=${o}&limit=${c}&active=${l}`;
+  const r = process.env.SHARAI_SERVER_URL, { sort: e, page: o, limit: a, active: i } = t, c = e ? `${r}/api/product/get-all?sort=${e}&page=${o}&limit=${a}&active=${i}` : `${r}/api/product/get-all?page=${o}&limit=${a}&active=${i}`;
   try {
-    const i = await a.get(n), { data: u } = await i.data;
+    const n = await s.get(c), { data: u } = await n.data;
     return { data: u };
-  } catch (i) {
-    console.error(i);
+  } catch (n) {
+    console.error(n);
   }
 }, h = async (t) => {
   const r = process.env.SHARAI_SERVER_URL;
-  s();
   try {
-    const e = await a.post(
+    const e = await s.post(
       `${r}/api/products/post-one`,
       { ...t },
       {
@@ -63,30 +60,27 @@ const R = async (t) => {
   }
 }, S = async (t) => {
   const r = process.env.SHARAI_SERVER_URL;
-  s();
   try {
-    return (await a.get(`${r}/api/product/search?phrase=${t}`)).data.result;
+    return (await s.get(`${r}/api/product/search?phrase=${t}`)).data.result;
   } catch (e) {
     console.error("There was a problem posting the data:", e);
   }
-}, U = {
+}, L = {
   DELETE: R,
   GET: E,
   POST: h,
   SEARCH: S
 }, g = async (t) => {
   const r = process.env.SHARAI_SERVER_URL;
-  s();
   try {
-    await a.delete(`${r}/api/invoice/delete-one?id=${t}`);
+    await s.delete(`${r}/api/invoice/delete-one?id=${t}`);
   } catch (e) {
     console.error(e);
   }
 }, v = async (t = 1) => {
   const r = process.env.SHARAI_SERVER_URL;
-  s();
   try {
-    const e = await a.get(`${r}/api/invoice/get-all?page=${t}`), { data: o } = await e.data;
+    const e = await s.get(`${r}/api/invoice/get-all?page=${t}`), { data: o } = await e.data;
     return { data: o };
   } catch (e) {
     console.error(e);
@@ -94,9 +88,8 @@ const R = async (t) => {
 }, A = async (t) => {
   if (!t) return;
   const r = process.env.SHARAI_SERVER_URL;
-  s();
   try {
-    return await a.post(`${r}/api/orders/post-one`, t, {
+    return await s.post(`${r}/api/orders/post-one`, t, {
       headers: {
         "Content-Type": "application/json"
       }
@@ -106,13 +99,12 @@ const R = async (t) => {
   }
 }, $ = async (t) => {
   const r = process.env.SHARAI_SERVER_URL;
-  s();
   try {
-    return (await a.get(`${r}/api/invoice/search?phrase=${t}`)).data.result;
+    return (await s.get(`${r}/api/invoice/search?phrase=${t}`)).data.result;
   } catch (e) {
     console.error("There was a problem posting the data:", e);
   }
-}, m = {
+}, U = {
   DELETE: g,
   GET: v,
   POST: A,
@@ -120,15 +112,15 @@ const R = async (t) => {
 }, _ = async (t) => {
   const r = process.env.SHARAI_SERVER_URL;
   try {
-    s(), await a.delete(`${r}/api/category/delete-one?id=${t}`);
+    l(), await s.delete(`${r}/api/category/delete-one?id=${t}`);
   } catch (e) {
     console.error(e);
   }
 }, w = async () => {
   const t = process.env.SHARAI_SERVER_URL;
   try {
-    s();
-    const r = await a.get(`${t}/api/category/get-all`), { data: e } = await r.data;
+    l();
+    const r = await s.get(`${t}/api/category/get-all`), { data: e } = await r.data;
     return { data: e };
   } catch (r) {
     console.error(r);
@@ -137,7 +129,7 @@ const R = async (t) => {
   const r = process.env.SHARAI_SERVER_URL;
   if (t)
     try {
-      s(), await a.post(`${r}/api/category/post-one`, t, {
+      l(), await s.post(`${r}/api/category/post-one`, t, {
         headers: {
           "Content-Type": "application/json"
         }
@@ -153,6 +145,6 @@ const R = async (t) => {
 };
 export {
   H as Category,
-  m as Invoice,
-  U as Product
+  U as Invoice,
+  L as Product
 };

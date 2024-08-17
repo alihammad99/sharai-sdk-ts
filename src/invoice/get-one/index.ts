@@ -1,4 +1,4 @@
-import { validateUrl } from "@/validate-url";
+import { validateUrl } from "../../utils/validate-url";
 import axios from "axios";
 
 export const getOneInvoice = async (id: string) => {
