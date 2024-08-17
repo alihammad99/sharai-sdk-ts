@@ -1,9 +1,12 @@
+import { validateUrl } from "@/validate-url";
 import axios from "axios";
 
 export const clientUpdateInvoice = async (data: any) => {
+  const url = process.env.SHARAI_SERVER_URL;
+  validateUrl();
   if (!data) return;
   try {
-    await axios.put("/api/invoice/update-one", data, {
+    await axios.put(`${url}/api/invoice/update-one`, data, {
       headers: {
         "Content-Type": "application/json",
       },

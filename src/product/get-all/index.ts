@@ -15,7 +15,6 @@ type Props = {
 
 export const clientGetProduct = (options: Props) => {
   const { id, category, products, active } = options;
-  validateUrl();
   if (id) {
     return clientGetAllProducts(options);
   } else if (products && products?.length > 0) {
@@ -28,6 +27,7 @@ export const clientGetProduct = (options: Props) => {
 };
 
 export const clientGetAllProducts = async (options: Props) => {
+  validateUrl();
   const url = process.env.SHARAI_SERVER_URL;
   const { sort, page, limit, active } = options;
   const URL = sort

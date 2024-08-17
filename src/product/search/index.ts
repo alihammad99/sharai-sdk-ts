@@ -3,8 +3,8 @@ import axios from "axios";
 
 export const clientSearchProduct = async (phrase: string) => {
   const url = process.env.SHARAI_SERVER_URL;
+  validateUrl();
   try {
-    validateUrl();
     const res = await axios.get(`${url}/api/product/search?phrase=${phrase}`);
     const value = res.data.result;
     return value;

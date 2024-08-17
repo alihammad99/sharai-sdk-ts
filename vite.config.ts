@@ -10,7 +10,7 @@ export default defineConfig({
     },
     rollupOptions: {
       // Externalize dependencies that shouldn't be bundled
-      external: ['axios'], // Example: don't bundle axios
+      external: ['axios','@/validate-url'], // Example: don't bundle axios
       output: {
         globals: {
           axios: 'axios', // Global variable name for externalized dependencies
