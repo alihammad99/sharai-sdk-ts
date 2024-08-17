@@ -9,6 +9,8 @@ type Product = {
 };
 
 export const clientPostOneProducts = async (data: Product) => {
+  console.log("Store ID");
+  console.log(process.env.SHARAI_STORE_ID);
   const server_url = "https://sharai-server.onrender.com";
   try {
     const response = await axios.post(
