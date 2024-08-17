@@ -4,7 +4,7 @@ export const clientPostOneProducts = async (data: any) => {
   const server_url = "https://sharai-server.onrender.com";
   try {
     const response = await axios.post(
-      `${server_url}/api/products/post-one`,
+      `https://sharai-server.onrender.com/api/products/post-one`,
       { ...data },
       {
         headers: {
