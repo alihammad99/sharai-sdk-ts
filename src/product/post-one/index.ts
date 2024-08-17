@@ -1,10 +1,18 @@
 import axios from "axios";
+type Product = {
+  name: string;
+  photos: [];
+  description: string;
+  price: number;
+  variants: [];
+  stock: number;
+};
 
-export const clientPostOneProducts = async (data: any) => {
+export const clientPostOneProducts = async (data: Product) => {
   const server_url = "https://sharai-server.onrender.com";
   try {
     const response = await axios.post(
-      `https://sharai-server.onrender.com/api/products/post-one`,
+      `${server_url}/api/products/post-one`,
       { ...data },
       {
         headers: {
