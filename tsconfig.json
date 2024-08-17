@@ -5,15 +5,19 @@
     "moduleResolution": "Node",
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationDir": "./dist",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "sourceMap": true,
+    "skipLibCheck": true, // Skip type checking of all declaration files
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
-    },
-    "outDir": "./dist",
-    "sourceMap": true
+    }
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"] // Exclude node_modules from compilation
 }

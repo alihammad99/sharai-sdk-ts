@@ -1,8 +1,10 @@
 {
   "name": "sharai-sdk-ts",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "description": "This is a beta version of Sharai client SDK for TypeScript",
-  "main": "dist/main.umd",
+  "main": "dist/sharai-sdk-ts.umd.js",
+  "module": "dist/sharai-sdk-ts.es.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "!README.md"
@@ -14,6 +16,10 @@
   "keywords": [],
   "author": "Ali Hammad",
   "dependencies": {
+    "@types/codemirror": "^5.60.15",
+    "@types/dotenv": "^8.2.0",
+    "@types/mongodb": "^4.0.7",
+    "@types/node": "^22.4.0",
     "axios": "1.7.4",
     "dotenv": "^16.4.5",
     "path": "^0.12.7"
