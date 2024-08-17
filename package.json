@@ -1,10 +1,10 @@
 {
   "name": "sharai-sdk-ts",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "This is a beta version of Sharai client SDK for TypeScript",
   "main": "dist/main.umd",
   "files": [
-    "lib",
+    "dist",
     "!README.md"
   ],
   "scripts": {
