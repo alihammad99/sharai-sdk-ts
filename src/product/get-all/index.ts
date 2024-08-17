@@ -1,5 +1,6 @@
 import axios from "axios";
 import { clientGetProductsByCategory } from "../get-by-category";
+import { validateUrl } from "@/validate-url";
 import { clientGetManyProducts } from "../post-many";
 
 type Props = {
@@ -14,6 +15,7 @@ type Props = {
 
 export const clientGetProduct = (options: Props) => {
   const { id, category, products, active } = options;
+  validateUrl();
   if (id) {
     return clientGetAllProducts(options);
   } else if (products && products?.length > 0) {
@@ -26,10 +28,11 @@ export const clientGetProduct = (options: Props) => {
 };
 
 export const clientGetAllProducts = async (options: Props) => {
+  const url = process.env.SHARAI_SERVER_URL;
   const { sort, page, limit, active } = options;
   const URL = sort
-    ? `/api/product/get-all?sort=${sort}&page=${page}&limit=${limit}&active=${active}`
-    : `/api/product/get-all?page=${page}&limit=${limit}&active=${active}`;
+    ? `${url}/api/product/get-all?sort=${sort}&page=${page}&limit=${limit}&active=${active}`
+    : `${url}/api/product/get-all?page=${page}&limit=${limit}&active=${active}`;
   try {
     const response = await axios.get(URL);
     const { data } = await response.data;

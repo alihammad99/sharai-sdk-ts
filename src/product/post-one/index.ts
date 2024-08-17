@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export const clientGetManyProducts = async (list: string[], active = true) => {
+export const clientPostOneProducts = async (data: any) => {
   try {
     const response = await axios.post(
-      `/api/product/post-many?active=${active}`,
-      { products: [...list] },
+      `/api/products/post-one`,
+      { ...data },
       {
         headers: {
           "Content-Type": "application/json",

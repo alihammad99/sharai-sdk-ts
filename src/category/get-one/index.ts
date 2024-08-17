@@ -1,8 +1,11 @@
+import { validateUrl } from "@/validate-url";
 import axios from "axios";
 
 export const fetchOneCategory = async (id: string) => {
+  const url = process.env.SHARAI_SERVER_URL;
   try {
-    const response = await axios.get(`/api/category/get-one?id=${id}`);
+    validateUrl();
+    const response = await axios.get(`${url}/api/category/get-one?id=${id}`);
     const { data } = await response.data;
     return { data };
   } catch (error) {

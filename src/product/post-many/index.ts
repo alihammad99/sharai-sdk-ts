@@ -1,10 +1,11 @@
 import axios from "axios";
 
-export const clientPostOneProducts = async (data: any) => {
+export const clientGetManyProducts = async (list: string[], active = true) => {
+  const url = process.env.SHARAI_SERVER_URL;
   try {
     const response = await axios.post(
-      `/api/products/post-one`,
-      { ...data },
+      `${url}/api/product/post-many?active=${active}`,
+      { products: [...list] },
       {
         headers: {
           "Content-Type": "application/json",
@@ -12,7 +13,7 @@ export const clientPostOneProducts = async (data: any) => {
       }
     );
     const { result } = response.data;
-    return true;
+    return result;
   } catch (error) {
     console.error("There was a problem posting the data:", error);
   }

@@ -1,8 +1,11 @@
+import { validateUrl } from "@/validate-url";
 import axios from "axios";
 
 export const clientDeleteOneInvoice = async (id: string) => {
+  const url = process.env.SHARAI_SERVER_URL;
   try {
-    await axios.delete(`/api/invoice/delete-one?id=${id}`);
+    validateUrl();
+    await axios.delete(`${url}/api/invoice/delete-one?id=${id}`);
   } catch (error) {
     console.error(error);
   }

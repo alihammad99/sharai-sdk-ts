@@ -1,9 +1,12 @@
+import { validateUrl } from "@/validate-url";
 import axios from "axios";
 
 export const clientAddCategory = async (data: any) => {
+  const url = process.env.SHARAI_SERVER_URL;
   if (!data) return;
   try {
-    await axios.post("/api/category/post-one", data, {
+    validateUrl();
+    await axios.post(`${url}/api/category/post-one`, data, {
       headers: {
         "Content-Type": "application/json",
       },

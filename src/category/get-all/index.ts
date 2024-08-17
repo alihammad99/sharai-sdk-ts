@@ -1,8 +1,11 @@
+import { validateUrl } from "@/validate-url";
 import axios from "axios";
 
 export const clientGetAllCategories = async () => {
+  const url = process.env.SHARAI_SERVER_URL;
   try {
-    const response = await axios.get(`/api/category/get-all`);
+    validateUrl();
+    const response = await axios.get(`${url}/api/category/get-all`);
     const { data } = await response.data;
     return { data };
   } catch (error) {
@@ -11,8 +14,10 @@ export const clientGetAllCategories = async () => {
 };
 
 export const clientGetAllGroupCategories = async () => {
+  const url = process.env.SHARAI_SERVER_URL;
   try {
-    const response = await axios.get(`/api/parent-category/get-all`);
+    validateUrl();
+    const response = await axios.get(`${url}/api/parent-category/get-all`);
     const { data } = await response.data;
     return { data };
   } catch (error) {
