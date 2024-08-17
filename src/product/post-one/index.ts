@@ -1,16 +1,19 @@
 import axios from "axios";
+type Photo = {
+  name: string;
+  format: string;
+  base46content: string;
+};
 type Product = {
   name: string;
-  photos: [];
+  photos?: Photo[];
   description: string;
   price: number;
   variants: [];
-  stock: number;
+  stock?: number;
 };
 
 export const clientPostOneProducts = async (data: Product) => {
-  console.log("Store ID");
-  console.log(process.env.SHARAI_STORE_ID);
   const server_url = "https://sharai-server.onrender.com";
   try {
     const response = await axios.post(

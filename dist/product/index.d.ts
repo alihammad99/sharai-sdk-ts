@@ -11,11 +11,15 @@ declare const Product: {
     }) => Promise<any>;
     POST: (data: {
         name: string;
-        photos: [];
+        photos?: {
+            name: string;
+            format: string;
+            base46content: string;
+        }[];
         description: string;
         price: number;
         variants: [];
-        stock: number;
+        stock?: number;
     }) => Promise<any>;
     SEARCH: (phrase: string) => Promise<any>;
 };

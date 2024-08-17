@@ -1,10 +1,15 @@
+type Photo = {
+    name: string;
+    format: string;
+    base46content: string;
+};
 type Product = {
     name: string;
-    photos: [];
+    photos?: Photo[];
     description: string;
     price: number;
     variants: [];
-    stock: number;
+    stock?: number;
 };
 export declare const clientPostOneProducts: (data: Product) => Promise<any>;
 export {};

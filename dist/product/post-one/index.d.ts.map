@@ -1,1 +1,0 @@
-{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../src/product/post-one/index.ts"],"names":[],"mappings":"AACA,KAAK,OAAO,GAAG;IACb,IAAI,EAAE,MAAM,CAAC;IACb,MAAM,EAAE,EAAE,CAAC;IACX,WAAW,EAAE,MAAM,CAAC;IACpB,KAAK,EAAE,MAAM,CAAC;IACd,QAAQ,EAAE,EAAE,CAAC;IACb,KAAK,EAAE,MAAM,CAAC;CACf,CAAC;AAEF,eAAO,MAAM,qBAAqB,SAAgB,OAAO,iBAmBxD,CAAC"}
