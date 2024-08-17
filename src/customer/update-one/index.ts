@@ -1,11 +1,6 @@
-import { checkCustomer } from "@/app/utils/cookies/set";
 import axios from "axios";
 
 export const clientUpdateCustomer = async (data: any) => {
-  const customer = await checkCustomer();
-
-  if (!customer) return;
-
   try {
     const send = await axios.put(`/api/customer/update-one`, data, {
       headers: {

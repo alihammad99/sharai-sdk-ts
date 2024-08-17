@@ -6,6 +6,7 @@ const config = {
 };
 dotenv.config({ path: path.resolve(__dirname, config.envPath) });
 
+export { config } from "./config";
 
 export { default as Product } from "./product";
 export { default as Invoice } from "./invoice";
