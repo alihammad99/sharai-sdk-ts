@@ -1,7 +1,7 @@
-import { server_url } from "../../utils/server-url";
 import axios from "axios";
 
 export const clientPostOneProducts = async (data: any) => {
+  const server_url = "https://sharai-server.onrender.com";
   try {
     const response = await axios.post(
       `${server_url}/api/products/post-one`,
