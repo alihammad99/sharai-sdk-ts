@@ -1,3 +1,4 @@
+import { headers } from "../../config";
 import { server_url } from "../../utils/server-url";
 import axios from "axios";
 
@@ -11,7 +12,7 @@ export const clientGetProductsByCategory = async (
     ? `${server_url}/api/product/get-by-category?id=${id}&sort=${sort}&active=${active}&similar=${similar}`
     : `${server_url}/api/product/get-by-category?id=${id}&active=${active}&similar=${similar}`;
   try {
-    const response = await axios.get(URL);
+    const response = await axios.get(URL, { headers });
     const { data } = await response.data;
     return { data };
   } catch (error) {

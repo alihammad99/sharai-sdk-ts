@@ -1,3 +1,4 @@
+import { headers } from "../..//config";
 import { server_url } from "../../utils/server-url";
 import axios from "axios";
 
@@ -6,11 +7,7 @@ export const clientGetManyProducts = async (list: string[], active = true) => {
     const response = await axios.post(
       `${server_url}/api/product/post-many?active=${active}`,
       { products: [...list] },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
+      { headers }
     );
     const { result } = response.data;
     return result;

@@ -1,3 +1,4 @@
+import { headers } from "../../config";
 import { server_url } from "../../utils/server-url";
 import axios from "axios";
 
@@ -11,7 +12,10 @@ export const clientDeleteOneCategory = async (id: string) => {
 
 export const fetchDeleteOneGroupCategory = async (id: string) => {
   try {
-    await axios.delete(`${server_url}/api/parent-category/delete-one?id=${id}`);
+    await axios.delete(
+      `${server_url}/api/parent-category/delete-one?id=${id}`,
+      { headers }
+    );
   } catch (error) {
     console.error(error);
   }

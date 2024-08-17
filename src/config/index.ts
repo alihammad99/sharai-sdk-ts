@@ -17,6 +17,4 @@ export const config = ({ store_id, token }: Data) => {
   if (token) {
     headers.token = token;
   }
-  console.log("headers");
-  console.log(headers);
 };

@@ -1,10 +1,12 @@
+import { headers } from "../../config";
 import { server_url } from "../../utils/server-url";
 import axios from "axios";
 
 export const clientSearchInvoice = async (phrase: string) => {
   try {
     const res = await axios.get(
-      `${server_url}/api/invoice/search?phrase=${phrase}`
+      `${server_url}/api/invoice/search?phrase=${phrase}`,
+      { headers }
     );
     const value = res.data.result;
     return value;

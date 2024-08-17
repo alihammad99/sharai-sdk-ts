@@ -2,6 +2,7 @@ import axios from "axios";
 import { clientGetProductsByCategory } from "../get-by-category";
 import { clientGetManyProducts } from "../post-many";
 import { server_url } from "../../utils/server-url";
+import { headers } from "../../config";
 
 type Props = {
   sort?: string | null;
@@ -32,7 +33,9 @@ export const clientGetAllProducts = async (options: Props) => {
     ? `${server_url}/api/product/get-all?sort=${sort}&page=${page}&limit=${limit}&active=${active}`
     : `${server_url}/api/product/get-all?page=${page}&limit=${limit}&active=${active}`;
   try {
-    const response = await axios.get(URL);
+    const response = await axios.get(URL, {
+      headers,
+    });
     const { data } = await response.data;
     return { data };
   } catch (error) {

@@ -18,7 +18,15 @@ declare const Product: {
         }[];
         description: string;
         price: number;
-        variants: [];
+        variants: {
+            title: string;
+            list: {
+                options: [];
+                colors: [];
+                price: number;
+                stock: number;
+            }[];
+        };
         stock?: number;
     }) => Promise<any>;
     SEARCH: (phrase: string) => Promise<any>;

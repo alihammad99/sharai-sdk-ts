@@ -1,72 +1,66 @@
-import n from "axios";
-const l = {
+import c from "axios";
+const a = {
   store_id: null,
   token: null,
   "Content-Type": "application/json"
 }, O = ({ store_id: e, token: t }) => {
-  e && (l.store_id = e), t && (l.token = t), console.log("headers"), console.log(l);
-}, a = "https://sharai-server.onrender.com", u = async (e) => {
+  e && (a.store_id = e), t && (a.token = t);
+}, o = "https://sharai-server.onrender.com", u = async (e) => {
   try {
-    await n.delete(`${a}/api/product/delete-one?id=${e}`, {
-      headers: l
+    await c.delete(`${o}/api/product/delete-one?id=${e}`, {
+      headers: a
     });
   } catch (t) {
     console.error(t);
   }
-}, y = async (e, t, r = !0, o = !1) => {
-  const c = `${a}/api/product/get-by-category?id=${e}&active=${r}&similar=${o}`;
+}, y = async (e, t, r = !0, n = !1) => {
+  const s = `${o}/api/product/get-by-category?id=${e}&active=${r}&similar=${n}`;
   try {
-    const s = await n.get(c), { data: i } = await s.data;
-    return { data: i };
-  } catch (s) {
-    console.error(s);
+    const i = await c.get(s, { headers: a }), { data: l } = await i.data;
+    return { data: l };
+  } catch (i) {
+    console.error(i);
   }
 }, h = async (e, t = !0) => {
   try {
-    const r = await n.post(
-      `${a}/api/product/post-many?active=${t}`,
+    const r = await c.post(
+      `${o}/api/product/post-many?active=${t}`,
       { products: [...e] },
-      {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }
-    ), { result: o } = r.data;
-    return o;
+      { headers: a }
+    ), { result: n } = r.data;
+    return n;
   } catch (r) {
     console.error("There was a problem posting the data:", r);
   }
 }, g = (e) => {
-  const { id: t, category: r, products: o, active: c } = e;
-  return t ? p(e) : o && (o == null ? void 0 : o.length) > 0 ? h(o, c) : r ? y(r) : p(e);
+  const { id: t, category: r, products: n, active: s } = e;
+  return t ? p(e) : n && (n == null ? void 0 : n.length) > 0 ? h(n, s) : r ? y(r) : p(e);
 }, p = async (e) => {
-  const { sort: t, page: r, limit: o, active: c } = e, s = t ? `${a}/api/product/get-all?sort=${t}&page=${r}&limit=${o}&active=${c}` : `${a}/api/product/get-all?page=${r}&limit=${o}&active=${c}`;
+  const { sort: t, page: r, limit: n, active: s } = e, i = t ? `${o}/api/product/get-all?sort=${t}&page=${r}&limit=${n}&active=${s}` : `${o}/api/product/get-all?page=${r}&limit=${n}&active=${s}`;
   try {
-    const i = await n.get(s), { data: d } = await i.data;
+    const l = await c.get(i, {
+      headers: a
+    }), { data: d } = await l.data;
     return { data: d };
-  } catch (i) {
-    console.error(i);
+  } catch (l) {
+    console.error(l);
   }
 }, $ = async (e) => {
-  const t = "https://sharai-server.onrender.com";
   try {
-    const r = await n.post(
-      `${t}/api/products/post-one`,
+    const t = await c.post(
+      `${o}/api/products/post-one`,
       { ...e },
-      {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }
-    ), { result: o } = r.data;
-    return o;
-  } catch (r) {
-    console.error("There was a problem posting the data:", r);
+      { headers: a }
+    ), { result: r } = t.data;
+    return r;
+  } catch (t) {
+    console.error("There was a problem posting the data:", t);
   }
 }, w = async (e) => {
   try {
-    return (await n.get(
-      `${a}/api/product/search?phrase=${e}`
+    return (await c.get(
+      `${o}/api/product/search?phrase=${e}`,
+      { headers: a }
     )).data.result;
   } catch (t) {
     console.error("There was a problem posting the data:", t);
@@ -78,14 +72,17 @@ const l = {
   SEARCH: w
 }, v = async (e) => {
   try {
-    await n.delete(`${a}/api/invoice/delete-one?id=${e}`);
+    await c.delete(`${o}/api/invoice/delete-one?id=${e}`, {
+      headers: a
+    });
   } catch (t) {
     console.error(t);
   }
 }, T = async (e = 1) => {
   try {
-    const t = await n.get(
-      `${a}/api/invoice/get-all?page=${e}`
+    const t = await c.get(
+      `${o}/api/invoice/get-all?page=${e}`,
+      { headers: a }
     ), { data: r } = await t.data;
     return { data: r };
   } catch (t) {
@@ -94,18 +91,15 @@ const l = {
 }, m = async (e) => {
   if (e)
     try {
-      return await n.post(`${a}/api/orders/post-one`, e, {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }), !0;
+      return await c.post(`${o}/api/orders/post-one`, e, { headers: a }), !0;
     } catch (t) {
       return console.error("There was a problem posting the data:", t), !1;
     }
 }, E = async (e) => {
   try {
-    return (await n.get(
-      `${a}/api/invoice/search?phrase=${e}`
+    return (await c.get(
+      `${o}/api/invoice/search?phrase=${e}`,
+      { headers: a }
     )).data.result;
   } catch (t) {
     console.error("There was a problem posting the data:", t);
@@ -117,32 +111,28 @@ const l = {
   SEARCH: E
 }, P = async (e) => {
   try {
-    await n.delete(`${a}/api/category/delete-one?id=${e}`);
+    await c.delete(`${o}/api/category/delete-one?id=${e}`);
   } catch (t) {
     console.error(t);
   }
-}, C = async () => {
+}, f = async () => {
   try {
-    const e = await n.get(`${a}/api/category/get-all`), { data: t } = await e.data;
+    const e = await c.get(`${o}/api/category/get-all`), { data: t } = await e.data;
     return { data: t };
   } catch (e) {
     console.error(e);
   }
-}, f = async (e) => {
+}, G = async (e) => {
   if (e)
     try {
-      await n.post(`${a}/api/category/post-one`, e, {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
+      await c.post(`${o}/api/category/post-one`, e, { headers: a });
     } catch (t) {
       console.error("There was a problem posting the data:", t);
     }
 }, A = {
   DELETE: P,
-  GET: C,
-  POST: f
+  GET: f,
+  POST: G
   // SEARCH: clientSearchProduct,
 };
 export {
