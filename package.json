@@ -1,6 +1,6 @@
 {
   "name": "sharai-sdk-ts",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "This is a beta version of Sharai client SDK for TypeScript",
   "main": "dist/main.umd",
   "files": [
@@ -8,7 +8,8 @@
     "!README.md"
   ],
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
+    "generate-types": "npx tsc --declaration --allowJs --emitDeclarationOnly"
   },
   "keywords": [],
   "author": "Ali Hammad",
@@ -19,6 +20,7 @@
   },
   "license": "ISC",
   "devDependencies": {
+    "typescript": "^5.5.4",
     "vite": "^5.4.1"
   }
 }
