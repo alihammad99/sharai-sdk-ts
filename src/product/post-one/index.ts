@@ -1,12 +1,10 @@
-import { validateUrl } from "../../utils/validate-url";
+import { server_url } from "../../utils/server-url";
 import axios from "axios";
 
 export const clientPostOneProducts = async (data: any) => {
-  const url = process.env.SHARAI_SERVER_URL;
-  validateUrl();
   try {
     const response = await axios.post(
-      `${url}/api/products/post-one`,
+      `${server_url}/api/products/post-one`,
       { ...data },
       {
         headers: {

@@ -1,10 +1,10 @@
+import { server_url } from "../../utils/server-url";
 import axios from "axios";
 
 export const clientGetManyProducts = async (list: string[], active = true) => {
-  const url = process.env.SHARAI_SERVER_URL;
   try {
     const response = await axios.post(
-      `${url}/api/product/post-many?active=${active}`,
+      `${server_url}/api/product/post-many?active=${active}`,
       { products: [...list] },
       {
         headers: {

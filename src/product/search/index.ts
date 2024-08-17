@@ -1,11 +1,11 @@
-import { validateUrl } from "../../utils/validate-url";
+import { server_url } from "../../utils/server-url";
 import axios from "axios";
 
 export const clientSearchProduct = async (phrase: string) => {
-  const url = process.env.SHARAI_SERVER_URL;
-  validateUrl();
   try {
-    const res = await axios.get(`${url}/api/product/search?phrase=${phrase}`);
+    const res = await axios.get(
+      `${server_url}/api/product/search?phrase=${phrase}`
+    );
     const value = res.data.result;
     return value;
   } catch (error) {

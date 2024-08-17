@@ -1,9 +1,10 @@
+import { server_url } from "../../utils/server-url";
 import axios from "axios";
 
 export const FetchUpdateCategory = async (data: any) => {
   if (!data) return;
   try {
-    await axios.post("/api/category/put-one", data, {
+    await axios.post(`${server_url}/api/category/put-one`, data, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -16,7 +17,7 @@ export const FetchUpdateCategory = async (data: any) => {
 export const FetchUpdateGroupCategory = async (data: any) => {
   if (!data) return;
   try {
-    await axios.put("/api/parent-category/put-one", data, {
+    await axios.put(`${server_url}/api/parent-category/put-one`, data, {
       headers: {
         "Content-Type": "application/json",
       },
