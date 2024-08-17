@@ -1,6 +1,6 @@
 {
   "name": "sharai-sdk-ts",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "This is a beta version of Sharai client SDK for TypeScript",
   "main": "dist/main.umd",
   "files": [
@@ -13,7 +13,9 @@
   "keywords": [],
   "author": "Ali Hammad",
   "dependencies": {
-    "axios": "1.7.4"
+    "axios": "1.7.4",
+    "dotenv": "^16.4.5",
+    "path": "^0.12.7"
   },
   "license": "ISC",
   "devDependencies": {
