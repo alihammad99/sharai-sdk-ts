@@ -6,9 +6,9 @@ import { headers } from "../../config";
 
 type Props = {
   sort?: string | null;
-  page: number;
+  page?: number;
   limit?: number | null;
-  active: true;
+  active?: true;
   id?: string;
   category?: string;
   products?: string[];
@@ -29,9 +29,12 @@ export const clientGetProduct = (options: Props) => {
 
 export const clientGetAllProducts = async (options: Props) => {
   const { sort, page, limit, active } = options;
-  const URL = sort
-    ? `${server_url}/api/product/get-all?sort=${sort}&page=${page}&limit=${limit}&active=${active}`
-    : `${server_url}/api/product/get-all?page=${page}&limit=${limit}&active=${active}`;
+  const URL = `${server_url}/api/product`;
+
+  // const URL = sort
+  // ? `${server_url}/api/product/get-all?sort=${sort}&page=${page}&limit=${limit}&active=${active}`
+  // : `${server_url}/api/product/get-all?page=${page}&limit=${limit}&active=${active}`;
+
   try {
     const response = await axios.get(URL, {
       headers,
