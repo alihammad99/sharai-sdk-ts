@@ -23,9 +23,11 @@ export const clientGetProduct = (options?: Props) => {
       return clientGetManyProducts(products, active);
     } else if (category) {
       return clientGetProductsByCategory(category);
+    } else {
+      return clientGetAllProducts(category);
     }
   } else {
-    return clientGetAllProducts(options);
+    return clientGetAllProducts();
   }
 };
 
