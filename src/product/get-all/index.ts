@@ -14,14 +14,16 @@ type Props = {
   products?: string[];
 };
 
-export const clientGetProduct = (options: Props) => {
-  const { id, category, products, active } = options;
-  if (id) {
-    return clientGetAllProducts(options);
-  } else if (products && products?.length > 0) {
-    return clientGetManyProducts(products, active);
-  } else if (category) {
-    return clientGetProductsByCategory(category);
+export const clientGetProduct = (options?: Props) => {
+  if (options) {
+    const { id, category, products, active } = options;
+    if (id) {
+      return clientGetAllProducts(options);
+    } else if (products && products?.length > 0) {
+      return clientGetManyProducts(products, active);
+    } else if (category) {
+      return clientGetProductsByCategory(category);
+    }
   } else {
     return clientGetAllProducts(options);
   }
