@@ -43,7 +43,7 @@ const o = {
   try {
     const r = await a.get(e, {
       headers: o
-    }), { data: n } = await r.data;
+    }), { data: n } = await r;
     return n;
   } catch (r) {
     console.error(r);

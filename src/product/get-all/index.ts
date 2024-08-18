@@ -43,7 +43,7 @@ export const clientGetAllProducts = async (options?: Props) => {
     const response = await axios.get(URL, {
       headers,
     });
-    const { data } = await response.data;
+    const { data } = await response;
     return data;
   } catch (error) {
     console.error(error);
