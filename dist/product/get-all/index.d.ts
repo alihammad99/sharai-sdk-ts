@@ -8,7 +8,5 @@ type Props = {
     products?: string[];
 };
 export declare const clientGetProduct: (options?: Props) => Promise<any>;
-export declare const clientGetAllProducts: (options?: Props) => Promise<{
-    data: any;
-} | undefined>;
+export declare const clientGetAllProducts: (options?: Props) => Promise<any>;
 export {};

@@ -44,7 +44,7 @@ const o = {
     const r = await a.get(e, {
       headers: o
     }), { data: n } = await r.data;
-    return { data: n };
+    return n;
   } catch (r) {
     console.error(r);
   }
