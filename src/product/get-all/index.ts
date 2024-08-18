@@ -27,8 +27,8 @@ export const clientGetProduct = (options: Props) => {
   }
 };
 
-export const clientGetAllProducts = async (options: Props) => {
-  const { sort, page, limit, active } = options;
+export const clientGetAllProducts = async (options?: Props) => {
+  // const { sort, page, limit, active } = options;
   const URL = `${server_url}/api/product`;
 
   // const URL = sort
