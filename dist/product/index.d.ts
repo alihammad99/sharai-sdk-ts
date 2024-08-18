@@ -1,10 +1,10 @@
 declare const Product: {
     DELETE: (id: string) => Promise<void>;
-    GET: (options: {
+    GET: (options?: {
         sort?: string | null;
-        page: number;
+        page?: number;
         limit?: number | null;
-        active: true;
+        active?: true;
         id?: string;
         category?: string;
         products?: string[];

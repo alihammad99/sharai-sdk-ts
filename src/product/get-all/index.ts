@@ -24,7 +24,7 @@ export const clientGetProduct = (options?: Props) => {
     } else if (category) {
       return clientGetProductsByCategory(category);
     } else {
-      return clientGetAllProducts(category);
+      return clientGetAllProducts(options);
     }
   } else {
     return clientGetAllProducts();
@@ -49,3 +49,4 @@ export const clientGetAllProducts = async (options?: Props) => {
     console.error(error);
   }
 };
+ 
