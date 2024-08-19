@@ -5,7 +5,7 @@ import axios from "axios";
 export const clientDeleteOneInvoice = async (id: string) => {
   try {
     await axios.delete(`${server_url}/api/invoice/delete-one?id=${id}`, {
-      headers,
+      headers: headers(),
     });
   } catch (error) {
     console.error(error);

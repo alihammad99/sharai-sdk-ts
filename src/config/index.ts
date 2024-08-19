@@ -1,20 +1,18 @@
+// Type definition for the data structure
 type Data = {
-  store_id: string | null;
-  token: string | null;
+  store_id?: string;
+  token?: string;
   "Content-Type"?: string;
 };
 
+// Define a class to manage headers
 class HeaderManager {
   private static instance: HeaderManager;
-  private headersMap: Map<string, any> = new Map();
+  private headersMap: Map<string, string> = new Map();
 
   // Private constructor to prevent direct instantiation
   private constructor() {
-    // Load any persisted data (e.g., from local storage)
-    const storedStoreId = localStorage.getItem("store_id");
-    const storedToken = localStorage.getItem("token");
-    if (storedStoreId) this.headersMap.set("store_id", storedStoreId);
-    if (storedToken) this.headersMap.set("token", storedToken);
+    // Initialize with default values
     this.headersMap.set("Content-Type", "application/json");
   }
 
@@ -26,31 +24,26 @@ class HeaderManager {
     return HeaderManager.instance;
   }
 
-  // Method to update the headers
-  public config({ store_id, token }: Data) {
-    if (store_id) {
-      this.headersMap.set("store_id", store_id);
-      localStorage.setItem("store_id", store_id); // Persist data
-    }
-    if (token) {
-      this.headersMap.set("token", token);
-      localStorage.setItem("token", token); // Persist data
-    }
+  // Method to update headers
+  public setHeaders({ store_id, token, "Content-Type": contentType }: Data) {
+    if (store_id) this.headersMap.set("store_id", store_id);
+    if (token) this.headersMap.set("token", token);
+    if (contentType) this.headersMap.set("Content-Type", contentType);
   }
 
-  // Method to get the current headers
-  public getHeaders(): Data {
-    return {
-      store_id: this.headersMap.get("store_id") || null,
-      token: this.headersMap.get("token") || null,
-      "Content-Type": this.headersMap.get("Content-Type") || "application/json",
-    };
+  // Method to get headers as a plain object
+  public getHeaders(): Record<string, string> {
+    const headersObject: Record<string, string> = {};
+    this.headersMap.forEach((value, key) => {
+      headersObject[key] = value;
+    });
+    return headersObject;
   }
 }
 
 // Create a singleton instance
 const headerManager = HeaderManager.getInstance();
 
-// Export the methods directly
-export const config = (data: Data) => headerManager.config(data);
+// Export the headers object and the setter function
 export const headers = () => headerManager.getHeaders();
+export const config = (data: Data) => headerManager.setHeaders(data);

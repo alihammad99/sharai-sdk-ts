@@ -1,146 +1,171 @@
-import a from "axios";
-const o = {
-  store_id: null,
-  token: null,
-  "Content-Type": "application/json"
-}, C = ({ store_id: t, token: e }) => {
-  t && (o.store_id = t), e && (o.token = e);
-}, c = "https://sharai-server.onrender.com", d = async (t) => {
+var g = Object.defineProperty;
+var w = (t, e, r) => e in t ? g(t, e, { enumerable: !0, configurable: !0, writable: !0, value: r }) : t[e] = r;
+var d = (t, e, r) => w(t, typeof e != "symbol" ? e + "" : e, r);
+import s from "axios";
+const c = class c {
+  // Private constructor to prevent direct instantiation
+  constructor() {
+    d(this, "headersMap", /* @__PURE__ */ new Map());
+    this.headersMap.set("Content-Type", "application/json");
+  }
+  // Public method to get the singleton instance
+  static getInstance() {
+    return c.instance || (c.instance = new c()), c.instance;
+  }
+  // Method to update headers
+  setHeaders({ store_id: e, token: r, "Content-Type": a }) {
+    e && this.headersMap.set("store_id", e), r && this.headersMap.set("token", r), a && this.headersMap.set("Content-Type", a);
+  }
+  // Method to get headers as a plain object
+  getHeaders() {
+    const e = {};
+    return this.headersMap.forEach((r, a) => {
+      e[a] = r;
+    }), e;
+  }
+};
+d(c, "instance");
+let h = c;
+const u = h.getInstance(), n = () => u.getHeaders(), D = (t) => u.setHeaders(t), o = "https://sharai-server.onrender.com", $ = async (t) => {
   try {
-    await a.delete(`${c}/api/product/delete-one?id=${t}`, {
-      headers: o
+    await s.delete(`${o}/api/product/delete-one?id=${t}`, {
+      headers: n()
     });
   } catch (e) {
     console.error(e);
   }
-}, u = async (t, e, r = !0, n = !1) => {
-  const s = `${c}/api/product/get-by-category?id=${t}&active=${r}&similar=${n}`;
+}, v = async (t, e, r = !0, a = !1) => {
+  const i = `${o}/api/product/get-by-category?id=${t}&active=${r}&similar=${a}`;
   try {
-    const i = await a.get(s, { headers: o }), { data: p } = await i.data;
-    return { data: p };
-  } catch (i) {
-    console.error(i);
+    const l = await s.get(i, { headers: n() }), { data: y } = await l.data;
+    return { data: y };
+  } catch (l) {
+    console.error(l);
   }
-}, y = async (t, e = !0) => {
+}, T = async (t, e = !0) => {
   try {
-    const r = await a.post(
-      `${c}/api/product/post-many?active=${e}`,
+    const r = await s.post(
+      `${o}/api/product/post-many?active=${e}`,
       { products: [...t] },
-      { headers: o }
-    ), { result: n } = r.data;
-    return n;
+      { headers: n() }
+    ), { result: a } = r.data;
+    return a;
   } catch (r) {
     console.error("There was a problem posting the data:", r);
   }
-}, h = (t) => {
+}, f = (t) => {
   if (t) {
-    const { id: e, category: r, products: n, active: s } = t;
-    return e ? l() : n && (n == null ? void 0 : n.length) > 0 ? y(n, s) : r ? u(r) : l();
+    const { id: e, category: r, products: a, active: i } = t;
+    return e ? p() : a && (a == null ? void 0 : a.length) > 0 ? T(a, i) : r ? v(r) : p();
   } else
-    return l();
-}, l = async (t) => {
-  const e = `${c}/api/product`;
+    return p();
+}, p = async (t) => {
+  const e = `${o}/api/product`;
   try {
-    const r = await a.get(e, {
-      headers: o
-    }), { data: n } = await r;
-    return n;
+    const r = await s.get(e, {
+      headers: n()
+    }), { data: a } = await r;
+    return a;
   } catch (r) {
     console.error(r);
   }
-}, g = async (t) => {
+}, E = async (t) => {
   try {
-    const e = await a.post(
-      `${c}/api/products/post-one`,
+    const e = await s.post(
+      `${o}/api/products/post-one`,
       { ...t },
-      { headers: o }
+      { headers: n() }
     ), { result: r } = e.data;
     return r;
   } catch (e) {
     console.error("There was a problem posting the data:", e);
   }
-}, w = async (t) => {
+}, P = async (t) => {
   try {
-    return (await a.get(
-      `${c}/api/product/search?phrase=${t}`,
-      { headers: o }
+    return (await s.get(
+      `${o}/api/product/search?phrase=${t}`,
+      { headers: n() }
     )).data.result;
   } catch (e) {
     console.error("There was a problem posting the data:", e);
   }
-}, O = {
-  DELETE: d,
-  GET: h,
-  POST: g,
-  SEARCH: w
-}, $ = async (t) => {
+}, L = {
+  DELETE: $,
+  GET: f,
+  POST: E,
+  SEARCH: P
+}, m = async (t) => {
   try {
-    await a.delete(`${c}/api/invoice/delete-one?id=${t}`, {
-      headers: o
+    await s.delete(`${o}/api/invoice/delete-one?id=${t}`, {
+      headers: n()
     });
   } catch (e) {
     console.error(e);
   }
-}, v = async (t = 1) => {
+}, C = async (t = 1) => {
   try {
-    const e = await a.get(
-      `${c}/api/invoice/get-all?page=${t}`,
-      { headers: o }
+    const e = await s.get(
+      `${o}/api/invoice/get-all?page=${t}`,
+      { headers: n() }
     ), { data: r } = await e.data;
     return { data: r };
   } catch (e) {
     console.error(e);
   }
-}, T = async (t) => {
+}, G = async (t) => {
   if (t)
     try {
-      return await a.post(`${c}/api/orders/post-one`, t, { headers: o }), !0;
+      return await s.post(`${o}/api/orders/post-one`, t, {
+        headers: n()
+      }), !0;
     } catch (e) {
       return console.error("There was a problem posting the data:", e), !1;
     }
-}, E = async (t) => {
+}, O = async (t) => {
   try {
-    return (await a.get(
-      `${c}/api/invoice/search?phrase=${t}`,
-      { headers: o }
+    return (await s.get(
+      `${o}/api/invoice/search?phrase=${t}`,
+      { headers: n() }
     )).data.result;
   } catch (e) {
     console.error("There was a problem posting the data:", e);
   }
-}, b = {
-  DELETE: $,
-  GET: v,
-  POST: T,
-  SEARCH: E
-}, P = async (t) => {
+}, H = {
+  DELETE: m,
+  GET: C,
+  POST: G,
+  SEARCH: O
+}, b = async (t) => {
   try {
-    await a.delete(`${c}/api/category/delete-one?id=${t}`);
+    await s.delete(`${o}/api/category/delete-one?id=${t}`);
   } catch (e) {
     console.error(e);
   }
-}, f = async () => {
+}, I = async () => {
   try {
-    const t = await a.get(`${c}/api/category/get-all`), { data: e } = await t.data;
+    const t = await s.get(`${o}/api/category/get-all`), { data: e } = await t.data;
     return { data: e };
   } catch (t) {
     console.error(t);
   }
-}, m = async (t) => {
+}, M = async (t) => {
   if (t)
     try {
-      await a.post(`${c}/api/category/post-one`, t, { headers: o });
+      await s.post(`${o}/api/category/post-one`, t, {
+        headers: n()
+      });
     } catch (e) {
       console.error("There was a problem posting the data:", e);
     }
-}, S = {
-  DELETE: P,
-  GET: f,
-  POST: m
+}, R = {
+  DELETE: b,
+  GET: I,
+  POST: M
   // SEARCH: clientSearchProduct,
 };
 export {
-  S as Category,
-  b as Invoice,
-  O as Product,
-  C as config
+  R as Category,
+  H as Invoice,
+  L as Product,
+  D as config
 };

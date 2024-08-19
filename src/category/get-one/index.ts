@@ -6,7 +6,7 @@ export const fetchOneCategory = async (id: string) => {
   try {
     const response = await axios.get(
       `${server_url}/api/category/get-one?id=${id}`,
-      { headers }
+      { headers: headers() }
     );
     const { data } = await response.data;
     return { data };

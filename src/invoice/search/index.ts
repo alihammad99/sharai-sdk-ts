@@ -6,7 +6,7 @@ export const clientSearchInvoice = async (phrase: string) => {
   try {
     const res = await axios.get(
       `${server_url}/api/invoice/search?phrase=${phrase}`,
-      { headers }
+      { headers: headers() }
     );
     const value = res.data.result;
     return value;
