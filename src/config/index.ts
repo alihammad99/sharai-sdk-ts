@@ -1,21 +1,22 @@
-// Type definition for the data structure
 type Data = {
   store_id: string | null;
   token: string | null;
   "Content-Type"?: string;
 };
 
-// Singleton class to manage the headers
 class HeaderManager {
   private static instance: HeaderManager;
-  private _headers: Data = {
-    store_id: null,
-    token: null,
-    "Content-Type": "application/json",
-  };
+  private headersMap: Map<string, any> = new Map();
 
   // Private constructor to prevent direct instantiation
-  private constructor() {}
+  private constructor() {
+    // Load any persisted data (e.g., from local storage)
+    const storedStoreId = localStorage.getItem("store_id");
+    const storedToken = localStorage.getItem("token");
+    if (storedStoreId) this.headersMap.set("store_id", storedStoreId);
+    if (storedToken) this.headersMap.set("token", storedToken);
+    this.headersMap.set("Content-Type", "application/json");
+  }
 
   // Public method to get the singleton instance
   public static getInstance(): HeaderManager {
@@ -28,16 +29,22 @@ class HeaderManager {
   // Method to update the headers
   public config({ store_id, token }: Data) {
     if (store_id) {
-      this._headers.store_id = store_id;
+      this.headersMap.set("store_id", store_id);
+      localStorage.setItem("store_id", store_id); // Persist data
     }
     if (token) {
-      this._headers.token = token;
+      this.headersMap.set("token", token);
+      localStorage.setItem("token", token); // Persist data
     }
   }
 
   // Method to get the current headers
-  public get headers(): Data {
-    return this._headers;
+  public getHeaders(): Data {
+    return {
+      store_id: this.headersMap.get("store_id") || null,
+      token: this.headersMap.get("token") || null,
+      "Content-Type": this.headersMap.get("Content-Type") || "application/json",
+    };
   }
 }
 
@@ -45,5 +52,5 @@ class HeaderManager {
 const headerManager = HeaderManager.getInstance();
 
 // Export the methods directly
-export const config = headerManager.config.bind(headerManager);
-export const headers = headerManager.headers;
+export const config = (data: Data) => headerManager.config(data);
+export const headers = () => headerManager.getHeaders();
