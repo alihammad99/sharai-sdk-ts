@@ -1,6 +1,6 @@
 {
   "name": "sharai-sdk-ts",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "This is a beta version of Sharai client SDK for TypeScript",
   "main": "dist/sharai-sdk-ts.umd.js",
   "module": "dist/sharai-sdk-ts.es.js",
@@ -20,11 +20,15 @@
     "@types/mongodb": "^4.0.7",
     "@types/node": "^22.4.0",
     "axios": "1.7.4",
+    "cookie": "^0.6.0",
     "dotenv": "^16.4.5",
+    "js-cookie": "^3.0.5",
     "path": "^0.12.7"
   },
   "license": "ISC",
   "devDependencies": {
+    "@types/cookie": "^0.6.0",
+    "@types/js-cookie": "^3.0.6",
     "typescript": "^5.5.4",
     "vite": "^5.4.1"
   }

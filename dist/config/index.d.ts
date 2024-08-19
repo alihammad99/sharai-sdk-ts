@@ -3,6 +3,6 @@ type Data = {
     token?: string;
     "Content-Type"?: string;
 };
-export declare const headers: () => Record<string, string>;
 export declare const config: (data: Data) => void;
+export declare const headers: () => Record<string, string>;
 export {};

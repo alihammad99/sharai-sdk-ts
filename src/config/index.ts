@@ -1,3 +1,9 @@
+import Cookies from "js-cookie";
+import { parse, serialize } from "cookie";
+
+// Define the key for storing headers in cookies
+const COOKIE_KEY = "headers";
+
 // Type definition for the data structure
 type Data = {
   store_id?: string;
@@ -5,45 +11,53 @@ type Data = {
   "Content-Type"?: string;
 };
 
-// Define a class to manage headers
-class HeaderManager {
-  private static instance: HeaderManager;
-  private headersMap: Map<string, string> = new Map();
+class CookieManager {
+  private static instance: CookieManager;
 
   // Private constructor to prevent direct instantiation
-  private constructor() {
-    // Initialize with default values
-    this.headersMap.set("Content-Type", "application/json");
-  }
+  private constructor() {}
 
   // Public method to get the singleton instance
-  public static getInstance(): HeaderManager {
-    if (!HeaderManager.instance) {
-      HeaderManager.instance = new HeaderManager();
+  public static getInstance(): CookieManager {
+    if (!CookieManager.instance) {
+      CookieManager.instance = new CookieManager();
     }
-    return HeaderManager.instance;
+    return CookieManager.instance;
   }
 
-  // Method to update headers
-  public setHeaders({ store_id, token, "Content-Type": contentType }: Data) {
-    if (store_id) this.headersMap.set("store_id", store_id);
-    if (token) this.headersMap.set("token", token);
-    if (contentType) this.headersMap.set("Content-Type", contentType);
-  }
-
-  // Method to get headers as a plain object
-  public getHeaders(): Record<string, string> {
+  // Set headers in cookies
+  public setHeaders(data: Data) {
     const headersObject: Record<string, string> = {};
-    this.headersMap.forEach((value, key) => {
-      headersObject[key] = value;
+
+    if (data.store_id) headersObject["store_id"] = data.store_id;
+    if (data.token) headersObject["token"] = data.token;
+    if (data["Content-Type"])
+      headersObject["Content-Type"] = data["Content-Type"];
+
+    const cookieValue = serialize(COOKIE_KEY, JSON.stringify(headersObject), {
+      path: "/",
     });
-    return headersObject;
+    Cookies.set(COOKIE_KEY, cookieValue, { path: "/" });
+  }
+
+  // Get headers from cookies
+  public getHeaders(): Record<string, string> {
+    const cookieValue = Cookies.get(COOKIE_KEY);
+    if (!cookieValue) return {};
+
+    try {
+      const headersObject = JSON.parse(cookieValue);
+      return headersObject;
+    } catch (error) {
+      console.error("Error parsing headers from cookies:", error);
+      return {};
+    }
   }
 }
 
 // Create a singleton instance
-const headerManager = HeaderManager.getInstance();
+const cookieManager = CookieManager.getInstance();
 
-// Export the headers object and the setter function
-export const headers = () => headerManager.getHeaders();
-export const config = (data: Data) => headerManager.setHeaders(data);
+// Export the functions
+export const config = (data: Data) => cookieManager.setHeaders(data);
+export const headers = () => cookieManager.getHeaders();

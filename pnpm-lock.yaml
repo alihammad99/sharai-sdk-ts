@@ -2,11 +2,15 @@ lockfileVersion: 5.4
 
 specifiers:
   '@types/codemirror': ^5.60.15
+  '@types/cookie': ^0.6.0
   '@types/dotenv': ^8.2.0
+  '@types/js-cookie': ^3.0.6
   '@types/mongodb': ^4.0.7
   '@types/node': ^22.4.0
   axios: 1.7.4
+  cookie: ^0.6.0
   dotenv: ^16.4.5
+  js-cookie: ^3.0.5
   path: ^0.12.7
   typescript: ^5.5.4
   vite: ^5.4.1
@@ -17,10 +21,14 @@ dependencies:
   '@types/mongodb': 4.0.7
   '@types/node': 22.4.0
   axios: 1.7.4
+  cookie: 0.6.0
   dotenv: 16.4.5
+  js-cookie: 3.0.5
   path: 0.12.7
 
 devDependencies:
+  '@types/cookie': 0.6.0
+  '@types/js-cookie': 3.0.6
   typescript: 5.5.4
   vite: 5.4.1_@types+node@22.4.0
 
@@ -373,6 +381,10 @@ packages:
       '@types/tern': 0.23.9
     dev: false
 
+  /@types/cookie/0.6.0:
+    resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
+    dev: true
+
   /@types/dotenv/8.2.0:
     resolution: {integrity: sha512-ylSC9GhfRH7m1EUXBXofhgx4lUWmFeQDINW5oLuS+gxWdfUeW4zJdeVTYVkexEW+e2VUvlZR2kGnGGipAWR7kw==}
     deprecated: This is a stub types definition. dotenv provides its own type definitions, so you do not need this installed.
@@ -382,6 +394,10 @@ packages:
 
   /@types/estree/1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
+
+  /@types/js-cookie/3.0.6:
+    resolution: {integrity: sha512-wkw9yd1kEXOPnvEeEV1Go1MmxtBJL0RR79aOTAApecWFVu7w0NNXNqhcWgvw2YgZDYadliXkl14pa3WXw5jlCQ==}
+    dev: true
 
   /@types/mongodb/4.0.7:
     resolution: {integrity: sha512-lPUYPpzA43baXqnd36cZ9xxorprybxXDzteVKCPAdp14ppHtFJHnXYvNpmBvtMUTb5fKXVv6sVbzo1LHkWhJlw==}
@@ -443,6 +459,11 @@ packages:
     engines: {node: '>= 0.8'}
     dependencies:
       delayed-stream: 1.0.0
+    dev: false
+
+  /cookie/0.6.0:
+    resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
+    engines: {node: '>= 0.6'}
     dev: false
 
   /delayed-stream/1.0.0:
@@ -515,6 +536,11 @@ packages:
 
   /inherits/2.0.3:
     resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
+    dev: false
+
+  /js-cookie/3.0.5:
+    resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
+    engines: {node: '>=14'}
     dev: false
 
   /memory-pager/1.5.0:
