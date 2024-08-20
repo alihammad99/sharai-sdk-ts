@@ -7,7 +7,7 @@ export const clientGetManyProducts = async (list: string[], active = true) => {
     const response = await axios.post(
       `${server_url}/api/product/post-many?active=${active}`,
       { products: [...list] },
-      { headers: headers() }
+      { headers }
     );
     const { result } = response.data;
     return result;

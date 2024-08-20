@@ -16,7 +16,7 @@ export const clientGetAllGroupCategories = async () => {
   try {
     const response = await axios.get(
       `${server_url}/api/parent-category/get-all`,
-      { headers: headers() }
+      { headers }
     );
     const { data } = await response.data;
     return { data };

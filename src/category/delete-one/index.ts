@@ -14,7 +14,7 @@ export const fetchDeleteOneGroupCategory = async (id: string) => {
   try {
     await axios.delete(
       `${server_url}/api/parent-category/delete-one?id=${id}`,
-      { headers: headers() }
+      { headers }
     );
   } catch (error) {
     console.error(error);

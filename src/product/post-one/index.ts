@@ -21,7 +21,7 @@ export const clientPostOneProducts = async (data: Product) => {
     const response = await axios.post(
       `${server_url}/api/products/post-one`,
       { ...data },
-      { headers: headers() }
+      { headers }
     );
     const { result } = response.data;
     return result;

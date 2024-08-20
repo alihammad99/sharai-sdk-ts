@@ -1,8 +1,8 @@
 type Data = {
-    store_id?: string;
-    token?: string;
+    store_id: string | null;
+    token: string | null;
     "Content-Type"?: string;
 };
-export declare const config: (data: Data) => void;
-export declare const headers: () => Record<string, string>;
+export declare const headers: Data;
+export declare const config: ({ store_id, token }: Data) => void;
 export {};
