@@ -5,7 +5,7 @@ import axios from "axios";
 export const clientAddCategory = async (data: any) => {
   if (!data) return;
   try {
-    await axios.post(`${server_url}/api/category/post-one`, data, {
+    await axios.post(`${server_url}/api/category`, data, {
       headers,
     });
   } catch (error) {

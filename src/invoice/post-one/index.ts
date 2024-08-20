@@ -5,7 +5,7 @@ import axios from "axios";
 export const clientPostOneInvoice = async (data: any) => {
   if (!data) return;
   try {
-    await axios.post(`${server_url}/api/orders/post-one`, data, {
+    await axios.post(`${server_url}/api/order`, data, {
       headers,
     });
     return true;

@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const clientDeleteOneCategory = async (id: string) => {
   try {
-    await axios.delete(`${server_url}/api/category/delete-one?id=${id}`);
+    await axios.delete(`${server_url}/api/category/${id}`, { headers });
   } catch (error) {
     console.error(error);
   }
@@ -12,10 +12,7 @@ export const clientDeleteOneCategory = async (id: string) => {
 
 export const fetchDeleteOneGroupCategory = async (id: string) => {
   try {
-    await axios.delete(
-      `${server_url}/api/parent-category/delete-one?id=${id}`,
-      { headers }
-    );
+    await axios.delete(`${server_url}/api/group-category/${id}`, { headers });
   } catch (error) {
     console.error(error);
   }

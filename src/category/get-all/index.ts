@@ -4,7 +4,9 @@ import axios from "axios";
 
 export const clientGetAllCategories = async () => {
   try {
-    const response = await axios.get(`${server_url}/api/category/get-all`);
+    const response = await axios.get(`${server_url}/api/category`, {
+      headers,
+    });
     const { data } = await response.data;
     return { data };
   } catch (error) {
@@ -14,10 +16,9 @@ export const clientGetAllCategories = async () => {
 
 export const clientGetAllGroupCategories = async () => {
   try {
-    const response = await axios.get(
-      `${server_url}/api/parent-category/get-all`,
-      { headers }
-    );
+    const response = await axios.get(`${server_url}/api/group-category`, {
+      headers,
+    });
     const { data } = await response.data;
     return { data };
   } catch (error) {

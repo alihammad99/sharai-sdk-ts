@@ -5,15 +5,15 @@ const o = {
   "Content-Type": "application/json"
 }, C = ({ store_id: t, token: e }) => {
   t && (o.store_id = t), e && (o.token = e);
-}, c = "https://sharai-server.onrender.com", d = async (t) => {
+}, c = "https://sharai-server.onrender.com", u = async (t) => {
   try {
-    await a.delete(`${c}/api/product/delete-one?id=${t}`, {
+    await a.delete(`${c}/api/product/${t}`, {
       headers: o
     });
   } catch (e) {
     console.error(e);
   }
-}, u = async (t, e, r = !0, n = !1) => {
+}, d = async (t, e, r = !0, n = !1) => {
   const s = `${c}/api/product/get-by-category?id=${t}&active=${r}&similar=${n}`;
   try {
     const i = await a.get(s, { headers: o }), { data: p } = await i.data;
@@ -35,7 +35,7 @@ const o = {
 }, h = (t) => {
   if (t) {
     const { id: e, category: r, products: n, active: s } = t;
-    return e ? l() : n && (n == null ? void 0 : n.length) > 0 ? y(n, s) : r ? u(r) : l();
+    return e ? l() : n && (n == null ? void 0 : n.length) > 0 ? y(n, s) : r ? d(r) : l();
   } else
     return l();
 }, l = async (t) => {
@@ -51,7 +51,7 @@ const o = {
 }, g = async (t) => {
   try {
     const e = await a.post(
-      `${c}/api/products/post-one`,
+      `${c}/api/products`,
       { ...t },
       { headers: o }
     ), { result: r } = e.data;
@@ -69,32 +69,31 @@ const o = {
     console.error("There was a problem posting the data:", e);
   }
 }, O = {
-  DELETE: d,
+  DELETE: u,
   GET: h,
   POST: g,
   SEARCH: w
 }, $ = async (t) => {
   try {
-    await a.delete(`${c}/api/invoice/delete-one?id=${t}`, {
+    await a.delete(`${c}/api/order/${t}`, {
       headers: o
     });
   } catch (e) {
     console.error(e);
   }
-}, v = async (t = 1) => {
+}, T = async (t = 1) => {
   try {
-    const e = await a.get(
-      `${c}/api/invoice/get-all?page=${t}`,
-      { headers: o }
-    ), { data: r } = await e.data;
+    const e = await a.get(`${c}/api/order?page=${t}`, {
+      headers: o
+    }), { data: r } = await e.data;
     return { data: r };
   } catch (e) {
     console.error(e);
   }
-}, T = async (t) => {
+}, v = async (t) => {
   if (t)
     try {
-      return await a.post(`${c}/api/orders/post-one`, t, {
+      return await a.post(`${c}/api/order`, t, {
         headers: o
       }), !0;
     } catch (e) {
@@ -111,18 +110,20 @@ const o = {
   }
 }, b = {
   DELETE: $,
-  GET: v,
-  POST: T,
+  GET: T,
+  POST: v,
   SEARCH: E
 }, P = async (t) => {
   try {
-    await a.delete(`${c}/api/category/delete-one?id=${t}`);
+    await a.delete(`${c}/api/category/${t}`, { headers: o });
   } catch (e) {
     console.error(e);
   }
 }, f = async () => {
   try {
-    const t = await a.get(`${c}/api/category/get-all`), { data: e } = await t.data;
+    const t = await a.get(`${c}/api/category`, {
+      headers: o
+    }), { data: e } = await t.data;
     return { data: e };
   } catch (t) {
     console.error(t);
@@ -130,7 +131,7 @@ const o = {
 }, m = async (t) => {
   if (t)
     try {
-      await a.post(`${c}/api/category/post-one`, t, {
+      await a.post(`${c}/api/category`, t, {
         headers: o
       });
     } catch (e) {

@@ -5,7 +5,7 @@ import axios from "axios";
 export const FetchUpdateCategory = async (data: any) => {
   if (!data) return;
   try {
-    await axios.post(`${server_url}/api/category/put-one`, data, {
+    await axios.post(`${server_url}/api/category`, data, {
       headers,
     });
   } catch (error) {
@@ -16,7 +16,7 @@ export const FetchUpdateCategory = async (data: any) => {
 export const FetchUpdateGroupCategory = async (data: any) => {
   if (!data) return;
   try {
-    await axios.put(`${server_url}/api/parent-category/put-one`, data, {
+    await axios.put(`${server_url}/api/parent-category`, data, {
       headers,
     });
   } catch (error) {

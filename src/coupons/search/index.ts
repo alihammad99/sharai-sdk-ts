@@ -9,7 +9,7 @@ export const fetchCouponKey = async (
   loading(true);
   if (!couponText) return;
   try {
-    const getCoupon = await axios.get(`/api/coupon/get-one?key=${couponText}`);
+    const getCoupon = await axios.get(`/api/coupon?key=${couponText}`);
     const result = getCoupon?.data;
     const { coupon } = result;
 

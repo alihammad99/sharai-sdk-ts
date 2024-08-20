@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const clientGetOneCustomer = async () => {
+export const clientGetOneCustomer = async (id: string) => {
   try {
-    const response = await axios.get(`/api/customer/get-one`);
+    const response = await axios.get(`/api/customer/${id}`);
     const { data } = await response;
     return data.customer;
   } catch (error) {

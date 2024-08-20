@@ -1,1 +1,1 @@
-export declare const clientGetOneCustomer: () => Promise<any>;
+export declare const clientGetOneCustomer: (id: string) => Promise<any>;
