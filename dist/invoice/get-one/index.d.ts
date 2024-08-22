@@ -1,1 +1,1 @@
-export declare const getOneInvoice: (id: string) => Promise<any>;
+export declare const clientGetOneInvoice: (id: string) => Promise<any>;
