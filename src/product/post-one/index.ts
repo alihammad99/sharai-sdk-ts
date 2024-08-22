@@ -10,10 +10,12 @@ type Variant = { options: []; colors: []; price: number; stock: number };
 type Product = {
   name: string;
   photos?: Photo[];
-  description: string;
+  description?: string;
   price: number;
   variants: { title: string; list: Variant[] };
   stock?: number;
+  discount?: number;
+  category: string;
 };
 
 export const clientPostOneProducts = async (data: Product) => {
@@ -23,8 +25,8 @@ export const clientPostOneProducts = async (data: Product) => {
       { ...data },
       { headers }
     );
-    const { result } = response.data;
-    return result;
+    const { id } = response.data;
+    return id;
   } catch (error) {
     console.error("There was a problem posting the data:", error);
   }

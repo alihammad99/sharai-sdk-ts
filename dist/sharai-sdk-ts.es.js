@@ -13,7 +13,7 @@ const o = {
   } catch (r) {
     console.error(r);
   }
-}, y = async (e, r, t = !0, n = !1) => {
+}, d = async (e, r, t = !0, n = !1) => {
   const s = `${c}/api/product/get-by-category?id=${e}&active=${t}&similar=${n}`;
   try {
     const i = await a.get(s, { headers: o }), { data: p } = await i;
@@ -21,7 +21,7 @@ const o = {
   } catch (i) {
     console.error(i);
   }
-}, d = async (e, r = !0) => {
+}, y = async (e, r = !0) => {
   try {
     const t = await a.post(
       `${c}/api/product/post-many?active=${r}`,
@@ -35,7 +35,7 @@ const o = {
 }, h = (e) => {
   if (e) {
     const { id: r, category: t, products: n, active: s } = e;
-    return r ? l() : n && (n == null ? void 0 : n.length) > 0 ? d(n, s) : t ? y(t) : l();
+    return r ? l() : n && (n == null ? void 0 : n.length) > 0 ? y(n, s) : t ? d(t) : l();
   } else
     return l();
 }, l = async (e) => {
@@ -54,7 +54,7 @@ const o = {
       `${c}/api/products`,
       { ...e },
       { headers: o }
-    ), { result: t } = r.data;
+    ), { id: t } = r.data;
     return t;
   } catch (r) {
     console.error("There was a problem posting the data:", r);
