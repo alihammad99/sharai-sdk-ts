@@ -8,7 +8,7 @@ export const clientGetAllInvoices = async (page = 1) => {
       headers,
     });
     const { data } = await response;
-    return { data };
+    return data;
   } catch (error) {
     console.error(error);
   }

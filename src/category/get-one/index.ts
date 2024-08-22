@@ -8,7 +8,7 @@ export const fetchOneCategory = async (id: string) => {
       headers,
     });
     const { data } = await response;
-    return { data };
+    return data;
   } catch (error) {
     console.error(error);
   }

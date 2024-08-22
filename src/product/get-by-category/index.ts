@@ -14,7 +14,7 @@ export const clientGetProductsByCategory = async (
   try {
     const response = await axios.get(URL, { headers });
     const { data } = await response;
-    return { data };
+    return data;
   } catch (error) {
     console.error(error);
   }

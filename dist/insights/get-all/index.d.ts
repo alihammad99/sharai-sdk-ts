@@ -1,3 +1,1 @@
-export declare const fetchAllInsights: () => Promise<{
-    data: any;
-} | undefined>;
+export declare const fetchAllInsights: () => Promise<any>;

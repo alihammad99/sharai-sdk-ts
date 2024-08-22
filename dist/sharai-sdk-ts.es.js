@@ -17,7 +17,7 @@ const o = {
   const s = `${c}/api/product/get-by-category?id=${t}&active=${r}&similar=${n}`;
   try {
     const i = await a.get(s, { headers: o }), { data: p } = await i;
-    return { data: p };
+    return p;
   } catch (i) {
     console.error(i);
   }
@@ -86,7 +86,7 @@ const o = {
     const e = await a.get(`${c}/api/order?page=${t}`, {
       headers: o
     }), { data: r } = await e;
-    return { data: r };
+    return r;
   } catch (e) {
     console.error(e);
   }
@@ -124,7 +124,7 @@ const o = {
     const t = await a.get(`${c}/api/category`, {
       headers: o
     }), { data: e } = await t;
-    return { data: e };
+    return e;
   } catch (t) {
     console.error(t);
   }

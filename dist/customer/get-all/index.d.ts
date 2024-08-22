@@ -1,3 +1,1 @@
-export declare const fetchAllCustomers: (page?: number) => Promise<{
-    data: any;
-} | undefined>;
+export declare const fetchAllCustomers: (page?: number) => Promise<any>;

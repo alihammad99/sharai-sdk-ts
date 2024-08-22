@@ -1,3 +1,1 @@
-export declare const clientGetAllInvoices: (page?: number) => Promise<{
-    data: any;
-} | undefined>;
+export declare const clientGetAllInvoices: (page?: number) => Promise<any>;

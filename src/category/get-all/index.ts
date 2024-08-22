@@ -8,7 +8,7 @@ export const clientGetAllCategories = async () => {
       headers,
     });
     const { data } = await response;
-    return { data };
+    return data;
   } catch (error) {
     console.error(error);
   }
@@ -20,7 +20,7 @@ export const clientGetAllGroupCategories = async () => {
       headers,
     });
     const { data } = await response;
-    return { data };
+    return data;
   } catch (error) {
     console.error(error);
   }

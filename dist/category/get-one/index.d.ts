@@ -1,3 +1,1 @@
-export declare const fetchOneCategory: (id: string) => Promise<{
-    data: any;
-} | undefined>;
+export declare const fetchOneCategory: (id: string) => Promise<any>;
