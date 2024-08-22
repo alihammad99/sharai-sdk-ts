@@ -13,15 +13,15 @@ const o = {
   } catch (e) {
     console.error(e);
   }
-}, d = async (t, e, r = !0, n = !1) => {
+}, y = async (t, e, r = !0, n = !1) => {
   const s = `${c}/api/product/get-by-category?id=${t}&active=${r}&similar=${n}`;
   try {
-    const i = await a.get(s, { headers: o }), { data: p } = await i.data;
+    const i = await a.get(s, { headers: o }), { data: p } = await i;
     return { data: p };
   } catch (i) {
     console.error(i);
   }
-}, y = async (t, e = !0) => {
+}, d = async (t, e = !0) => {
   try {
     const r = await a.post(
       `${c}/api/product/post-many?active=${e}`,
@@ -35,7 +35,7 @@ const o = {
 }, h = (t) => {
   if (t) {
     const { id: e, category: r, products: n, active: s } = t;
-    return e ? l() : n && (n == null ? void 0 : n.length) > 0 ? y(n, s) : r ? d(r) : l();
+    return e ? l() : n && (n == null ? void 0 : n.length) > 0 ? d(n, s) : r ? y(r) : l();
   } else
     return l();
 }, l = async (t) => {
@@ -85,7 +85,7 @@ const o = {
   try {
     const e = await a.get(`${c}/api/order?page=${t}`, {
       headers: o
-    }), { data: r } = await e.data;
+    }), { data: r } = await e;
     return { data: r };
   } catch (e) {
     console.error(e);
@@ -123,7 +123,7 @@ const o = {
   try {
     const t = await a.get(`${c}/api/category`, {
       headers: o
-    }), { data: e } = await t.data;
+    }), { data: e } = await t;
     return { data: e };
   } catch (t) {
     console.error(t);

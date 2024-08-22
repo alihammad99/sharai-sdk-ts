@@ -13,7 +13,7 @@ export const clientGetProductsByCategory = async (
     : `${server_url}/api/product/get-by-category?id=${id}&active=${active}&similar=${similar}`;
   try {
     const response = await axios.get(URL, { headers });
-    const { data } = await response.data;
+    const { data } = await response;
     return { data };
   } catch (error) {
     console.error(error);

@@ -7,7 +7,7 @@ export const clientGetAllInvoices = async (page = 1) => {
     const response = await axios.get(`${server_url}/api/order?page=${page}`, {
       headers,
     });
-    const { data } = await response.data;
+    const { data } = await response;
     return { data };
   } catch (error) {
     console.error(error);

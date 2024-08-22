@@ -7,7 +7,7 @@ export const getOneInvoice = async (id: string) => {
     const response = await axios.get(`${server_url}/api/order/${id}`, {
       headers,
     });
-    const { data } = await response.data;
+    const { data } = await response;
     return { data };
   } catch (error) {
     console.error(error);

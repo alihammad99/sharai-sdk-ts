@@ -7,7 +7,7 @@ export const clientGetAllCategories = async () => {
     const response = await axios.get(`${server_url}/api/category`, {
       headers,
     });
-    const { data } = await response.data;
+    const { data } = await response;
     return { data };
   } catch (error) {
     console.error(error);
@@ -19,7 +19,7 @@ export const clientGetAllGroupCategories = async () => {
     const response = await axios.get(`${server_url}/api/group-category`, {
       headers,
     });
-    const { data } = await response.data;
+    const { data } = await response;
     return { data };
   } catch (error) {
     console.error(error);
