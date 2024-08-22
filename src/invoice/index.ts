@@ -1,11 +1,11 @@
 import { clientDeleteOneInvoice } from "./delete-one";
-import { clientGetAllInvoices } from "./get-all";
+import { clientGetInvoices } from "./get-all";
 import { clientPostOneInvoice } from "./post-one";
 import { clientSearchInvoice } from "./search";
 
 const Invoice = {
   DELETE: clientDeleteOneInvoice,
-  GET: clientGetAllInvoices,
+  GET: clientGetInvoices,
   POST: clientPostOneInvoice,
   SEARCH: clientSearchInvoice,
 };

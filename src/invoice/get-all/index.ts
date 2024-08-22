@@ -11,7 +11,7 @@ type Props = {
   active?: true;
 };
 
-export const clientGetProduct = (options?: Props) => {
+export const clientGetInvoices = (options?: Props) => {
   if (options) {
     const { id } = options;
     if (id) {

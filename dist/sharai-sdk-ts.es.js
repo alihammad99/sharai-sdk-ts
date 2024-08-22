@@ -3,9 +3,9 @@ const o = {
   store_id: null,
   token: null,
   "Content-Type": "application/json"
-}, C = ({ store_id: e, token: r }) => {
+}, b = ({ store_id: e, token: r }) => {
   e && (o.store_id = e), r && (o.token = r);
-}, c = "https://sharai-server.onrender.com", u = async (e) => {
+}, c = "https://sharai-server.onrender.com", d = async (e) => {
   try {
     await a.delete(`${c}/api/product/${e}`, {
       headers: o
@@ -13,15 +13,15 @@ const o = {
   } catch (r) {
     console.error(r);
   }
-}, d = async (e, r, t = !0, n = !1) => {
+}, y = async (e, r, t = !0, n = !1) => {
   const s = `${c}/api/product/get-by-category?id=${e}&active=${t}&similar=${n}`;
   try {
-    const i = await a.get(s, { headers: o }), { data: p } = await i;
-    return p;
+    const i = await a.get(s, { headers: o }), { data: u } = await i;
+    return u;
   } catch (i) {
     console.error(i);
   }
-}, y = async (e, r = !0) => {
+}, h = async (e, r = !0) => {
   try {
     const t = await a.post(
       `${c}/api/product/post-many?active=${r}`,
@@ -32,10 +32,10 @@ const o = {
   } catch (t) {
     console.error("There was a problem posting the data:", t);
   }
-}, h = (e) => {
+}, g = (e) => {
   if (e) {
     const { id: r, category: t, products: n, active: s } = e;
-    return r ? l() : n && (n == null ? void 0 : n.length) > 0 ? y(n, s) : t ? d(t) : l();
+    return r ? l() : n && (n == null ? void 0 : n.length) > 0 ? h(n, s) : t ? y(t) : l();
   } else
     return l();
 }, l = async (e) => {
@@ -48,7 +48,7 @@ const o = {
   } catch (t) {
     console.error(t);
   }
-}, g = async (e) => {
+}, w = async (e) => {
   try {
     const r = await a.post(
       `${c}/api/product`,
@@ -59,7 +59,7 @@ const o = {
   } catch (r) {
     console.error("There was a problem posting the data:", r);
   }
-}, w = async (e) => {
+}, $ = async (e) => {
   try {
     return (await a.get(
       `${c}/api/product/search?phrase=${e}`,
@@ -68,12 +68,12 @@ const o = {
   } catch (r) {
     console.error("There was a problem posting the data:", r);
   }
-}, O = {
-  DELETE: u,
-  GET: h,
-  POST: g,
-  SEARCH: w
-}, $ = async (e) => {
+}, I = {
+  DELETE: d,
+  GET: g,
+  POST: w,
+  SEARCH: $
+}, v = async (e) => {
   try {
     await a.delete(`${c}/api/order/${e}`, {
       headers: o
@@ -82,6 +82,21 @@ const o = {
     console.error(r);
   }
 }, T = async (e) => {
+  try {
+    const r = await a.get(`${c}/api/order/${e}`, {
+      headers: o
+    }), { data: t } = await r;
+    return t;
+  } catch (r) {
+    console.error(r);
+  }
+}, f = (e) => {
+  if (e) {
+    const { id: r } = e;
+    return r ? T(r) : p(e);
+  } else
+    return p();
+}, p = async (e) => {
   try {
     const r = await a.get(
       `${c}/api/order?page=${e == null ? void 0 : e.page}`,
@@ -93,7 +108,7 @@ const o = {
   } catch (r) {
     console.error(r);
   }
-}, v = async (e) => {
+}, E = async (e) => {
   if (e)
     try {
       return await a.post(`${c}/api/order`, e, {
@@ -102,7 +117,7 @@ const o = {
     } catch (r) {
       return console.error("There was a problem posting the data:", r), !1;
     }
-}, E = async (e) => {
+}, P = async (e) => {
   try {
     return (await a.get(
       `${c}/api/invoice/search?phrase=${e}`,
@@ -111,18 +126,18 @@ const o = {
   } catch (r) {
     console.error("There was a problem posting the data:", r);
   }
-}, b = {
-  DELETE: $,
-  GET: T,
-  POST: v,
-  SEARCH: E
-}, P = async (e) => {
+}, S = {
+  DELETE: v,
+  GET: f,
+  POST: E,
+  SEARCH: P
+}, m = async (e) => {
   try {
     await a.delete(`${c}/api/category/${e}`, { headers: o });
   } catch (r) {
     console.error(r);
   }
-}, f = async () => {
+}, G = async () => {
   try {
     const e = await a.get(`${c}/api/category`, {
       headers: o
@@ -131,7 +146,7 @@ const o = {
   } catch (e) {
     console.error(e);
   }
-}, m = async (e) => {
+}, O = async (e) => {
   if (e)
     try {
       await a.post(`${c}/api/category`, e, {
@@ -140,15 +155,15 @@ const o = {
     } catch (r) {
       console.error("There was a problem posting the data:", r);
     }
-}, S = {
-  DELETE: P,
-  GET: f,
-  POST: m
+}, A = {
+  DELETE: m,
+  GET: G,
+  POST: O
   // SEARCH: clientSearchProduct,
 };
 export {
-  S as Category,
-  b as Invoice,
-  O as Product,
-  C as config
+  A as Category,
+  S as Invoice,
+  I as Product,
+  b as config
 };
