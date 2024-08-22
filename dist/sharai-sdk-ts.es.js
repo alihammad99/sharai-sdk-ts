@@ -51,7 +51,7 @@ const o = {
 }, g = async (e) => {
   try {
     const r = await a.post(
-      `${c}/api/products`,
+      `${c}/api/product`,
       { ...e },
       { headers: o }
     ), { id: t } = r.data;

@@ -21,7 +21,7 @@ type Product = {
 export const clientPostOneProducts = async (data: Product) => {
   try {
     const response = await axios.post(
-      `${server_url}/api/products`,
+      `${server_url}/api/product`,
       { ...data },
       { headers }
     );
