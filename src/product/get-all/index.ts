@@ -33,7 +33,11 @@ export const clientGetProduct = (options?: Props) => {
 
 export const clientGetAllProducts = async (options?: Props) => {
   // const { sort, page, limit, active } = options;
-  const URL = `${server_url}/api/product`;
+  let URL = `${server_url}/api/product`;
+
+  if (options?.page) {
+    URL = `${server_url}/api/product?page=${options?.page}`;
+  }
 
   // const URL = sort
   // ? `${server_url}/api/product/get-all?sort=${sort}&page=${page}&limit=${limit}&active=${active}`

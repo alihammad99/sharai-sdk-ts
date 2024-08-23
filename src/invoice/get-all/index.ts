@@ -25,13 +25,14 @@ export const clientGetInvoices = (options?: Props) => {
 };
 
 export const clientGetAllInvoices = async (options?: Props) => {
+  let URL = `${server_url}/api/order`;
+  if (options?.page) {
+    URL = `${server_url}/api/order?page=${options?.page}`;
+  }
   try {
-    const response = await axios.get(
-      `${server_url}/api/order?page=${options?.page}`,
-      {
-        headers,
-      }
-    );
+    const response = await axios.get(URL, {
+      headers,
+    });
     const { data } = await response;
     return data;
   } catch (error) {
